@@ -51,7 +51,6 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".PostActivity" />
-        <activity android:name=".FollowersActivity"></activity>
     </application>
 
 </manifest>

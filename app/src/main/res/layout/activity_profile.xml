@@ -12,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -43,33 +43,29 @@
             android:layout_below="@id/tvFullName"
             android:textSize="12sp"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tweet"
-            android:onClick="makeTweet"
-            android:id="@+id/button"
-            android:layout_below="@+id/ivProfileImage"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+
+
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Follow"
             android:id="@+id/btnFollow"
-            android:layout_below="@+id/button"
-            android:layout_centerHorizontal="true" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="followers"
-            android:onClick="viewFollowers"
-            android:id="@+id/btnFollowers"
-            android:layout_alignBottom="@+id/button"
+            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="52dp"
+            android:layout_marginEnd="52dp" />
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="followers"-->
+            <!--android:onClick="viewFollowers"-->
+            <!--android:id="@+id/btnFollowers"-->
+            <!--android:layout_alignBottom="@+id/button"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignParentEnd="true" />-->
 
     </RelativeLayout>
     <LinearLayout

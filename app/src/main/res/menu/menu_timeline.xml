@@ -6,7 +6,7 @@
     <item
         android:id="@+id/miProfile"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_profile1"
         android:title="Profile"
         android:onClick="onProfileView"
         ></item>

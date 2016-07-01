@@ -86,37 +86,64 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         btnRetweet.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                ((TimelineActivity) context1).showRetweetDialog((long) btnRetweet.getTag());
-                FragmentManager fm = ((AppCompatActivity) getContext()).getSupportFragmentManager();
-                RetweetFragment frag = new RetweetFragment();
-                frag.show(fm, "retweet_fragment");
+                Log.d("got", "here");
+
+                Log.d("got1", "here");
+                if (context1.getClass().equals(TimelineActivity.class)) {
+                    ((TimelineActivity) context1).showRetweetDialog((long) btnRetweet.getTag());
+                    FragmentManager fm = ((AppCompatActivity) getContext()).getSupportFragmentManager();
+                    RetweetFragment frag = new RetweetFragment();
+                    frag.show(fm, "retweet_fragment");
+                    Log.d("got1", "here");
+                }
+                else if (context1.getClass().equals(UserActivity.class)) {
+                    ((UserActivity) context1).showRetweetDialog((long) btnRetweet.getTag());
+                    FragmentManager fm = ((AppCompatActivity) getContext()).getSupportFragmentManager();
+                    RetweetFragment frag = new RetweetFragment();
+                    frag.show(fm, "retweet_fragment");
+
+                }
             }
+
         });
 
 
 
         final ImageButton btnFavorite = (ImageButton) convertView.findViewById(R.id.btnFavorite);
-        if (!tweet.getFavorited()) {
-            btnFavorite.setImageResource(R.drawable.tweet);
-        }
+//        if (tweet.getFavorited()) {
+//            btnFavorite.setImageResource(R.drawable.red_heart);
+//        }
         btnFavorite.setTag(tweet.getUid());
         tvUserName.setTag(tweet.getFavorited());
+        boolean isFavorited = tweet.getFavorited();
+        if (isFavorited) {
+            btnFavorite.setImageResource(R.drawable.red_heart);
+        }
+
+
+
+
+
         btnFavorite.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                if ((boolean) tvUserName.getTag()) {
+                if (!btnFavorite.isSelected()) {
                     long i = ((long) btnFavorite.getTag());
-                    deFavorite(i);
+                    favorite(i);
+                    btnFavorite.setImageResource(R.drawable.red_heart);
+                    btnFavorite.setSelected(true);
 
-                    Log.d("sup", "favorited already");
                 }
                 else {
                     long i = ((long) btnFavorite.getTag());
-                    favorite(i);
-                    Log.d("sup", "not favorited");
+                    deFavorite(i);
+                    btnFavorite.setImageResource(R.drawable.heart);
+                    btnFavorite.setSelected(false);
                 }
             }
         });
+
+
 
         // 5. Return the view to be inserted into the list
         return convertView;

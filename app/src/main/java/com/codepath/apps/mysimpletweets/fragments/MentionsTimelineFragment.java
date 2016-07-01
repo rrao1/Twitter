@@ -35,23 +35,13 @@ public class MentionsTimelineFragment extends TweetsListFragment {
             //SUCCESS
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
-                //deserialize json
-                //create models and add them to the adapter
-                //load the model data into listview
                 addAll(Tweet.fromJSONArray(json));
-
-                //Log.d("DEBUG", json.toString());
-                Log.d("DEBUG", json.toString());
-                //Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show();
-
-                //super.onSuccess(statusCode, headers, response);
             }
 
             //FAILURE
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 Log.d("DEBUG", errorResponse.toString());
-                //super.onFailure(statusCode, headers, responseString, throwable);
             }
 
         });

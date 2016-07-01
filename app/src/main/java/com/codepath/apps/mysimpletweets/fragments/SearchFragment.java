@@ -69,7 +69,6 @@ public class SearchFragment extends TweetsListFragment{
                     e.printStackTrace();
                 }
             }
-
             //FAILURE
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {

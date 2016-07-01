@@ -1,6 +1,8 @@
 package com.codepath.apps.mysimpletweets;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,11 +12,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.codepath.apps.mysimpletweets.fragments.HomeTimelineFragment;
@@ -38,13 +40,16 @@ public class TimelineActivity extends AppCompatActivity implements NewTweetFragm
     ViewPager vpPager;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4099FF")));
+        getSupportActionBar().setTitle("Twitter");
+        getSupportActionBar().setIcon(R.drawable.twitter_logo_blue);
+
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#FFFFFF\">" + "Twitter" + "</font>"));
 
 
         //get the viewpager
@@ -109,6 +114,8 @@ public class TimelineActivity extends AppCompatActivity implements NewTweetFragm
     }
 
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_timeline, menu);
@@ -119,8 +126,6 @@ public class TimelineActivity extends AppCompatActivity implements NewTweetFragm
             public boolean onQueryTextSubmit(String query) {
 
                 query1 = query;
-
-                Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
 
 
                 searchView.clearFocus();

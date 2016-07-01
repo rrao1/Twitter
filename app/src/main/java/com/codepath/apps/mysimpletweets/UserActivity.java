@@ -1,7 +1,7 @@
 package com.codepath.apps.mysimpletweets;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.codepath.apps.mysimpletweets.fragments.RetweetFragment;
 import com.codepath.apps.mysimpletweets.fragments.UserTimelineFragment;
 import com.codepath.apps.mysimpletweets.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -23,6 +23,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class UserActivity extends AppCompatActivity {
     TwitterClient client;
+    public long tweetId;
     User user;
 
     @Override
@@ -32,7 +33,7 @@ public class UserActivity extends AppCompatActivity {
         user = (User) Parcels.unwrap(getIntent().getParcelableExtra("user"));
         getSupportActionBar().setTitle("@" + user.getScreenName());
 
-        Button btnFollowers = (Button) findViewById(R.id.btnFollowers);
+        //Button btnFollowers = (Button) findViewById(R.id.btnFollowers);
         populateProfileHeader(user);
 
 
@@ -46,7 +47,6 @@ public class UserActivity extends AppCompatActivity {
             //display user fragment within this activity (dynamically)
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flContainer, fragmentUserTimeline);
-            Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show();
             ft.commit(); //changes the fragments
         }
     }
@@ -124,12 +124,12 @@ public class UserActivity extends AppCompatActivity {
         });
     }
 
-    public void viewFollowers(View view) {
-        Intent i = new Intent(UserActivity.this, FollowersActivity.class);
-        // put "extras" into the bundle for access in the second activity
-        i.putExtra("user_id", user.getUid());
-        // brings up the second activity
-        startActivity(i);
+    public void showRetweetDialog(long id) {
+        Log.d("idtimeline", id +"");
+        tweetId = id;
+        FragmentManager fm = getSupportFragmentManager();
+        RetweetFragment frag = new RetweetFragment();
+        frag.show(fm, "retweet_fragment");
     }
 
 }

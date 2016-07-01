@@ -17,6 +17,7 @@ import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.TimelineActivity;
 import com.codepath.apps.mysimpletweets.TwitterApplication;
 import com.codepath.apps.mysimpletweets.TwitterClient;
+import com.codepath.apps.mysimpletweets.UserActivity;
 import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -60,22 +61,26 @@ public class RetweetFragment extends DialogFragment {
 
     public void retweet() {
         TwitterClient client = TwitterApplication.getRestClient();
-        long id = ((TimelineActivity) getActivity()).tweetId;
-        Log.d("id in retweet fragment", id +"");
+        long id = 0;
+        Class hi = getActivity().getClass();
+        Log.d("class", hi.toString());
+        if (((getActivity()).getClass()).equals(TimelineActivity.class)) {
+
+            id = ((TimelineActivity) getActivity()).tweetId;
+            Log.d("sup", "sup");
+        } else {
+            id = ((UserActivity) getActivity()).tweetId;
+        }
         //get the current user
         client.retweet(id + "", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.d("fail", "success");
-                //Toast.makeText(getApplicationContext(), "sup", Toast.LENGTH_SHORT).show();
-
-                //user = User.fromJSON(response);
-                //my current user account's info
+                dismissAllowingStateLoss();
+                dismissAllowingStateLoss();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject json) {
-                Log.d("435345345345", "fail");
             }
         });
     }
