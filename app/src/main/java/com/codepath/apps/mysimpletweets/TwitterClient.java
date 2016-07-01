@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.scribe.builder.api.Api;
@@ -47,6 +48,101 @@ public class TwitterClient extends OAuthBaseClient {
         //execute the request
         getClient().get(apiUrl, params, handler);
     }
+
+	public void getMentionsTimeline(JsonHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/mentions_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		//execute the request
+		getClient().get(apiUrl, params, handler);
+	}
+
+	public void getUserTimeline(String screenName, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/user_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		params.put("screen_name", screenName);
+		//execute the request
+		getClient().get(apiUrl, params, handler);
+	}
+
+	public void getUserInfo(AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("account/verify_credentials.json");
+		getClient().get(apiUrl, null, handler);
+
+	}
+
+	//Post Tweet
+    public void postTweet(String status, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/update.json");
+        RequestParams params = new RequestParams();
+        params.put("status", status);
+        //execute the request
+        getClient().post(apiUrl, params, handler);
+    }
+
+	public void getSearch(String query, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("search/tweets.json");
+		RequestParams params = new RequestParams();
+		params.put("q", query);
+		//execute the request
+		getClient().get(apiUrl, params, handler);
+	}
+
+	public void retweet(String id, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/retweet/" + id + ".json");
+		RequestParams params = new RequestParams();
+		params.put("id", id);
+		//params.put("q", query);
+		//execute the request
+		getClient().post(apiUrl, params, handler);
+	}
+
+	public void favorite(long id, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("favorites/create.json");
+		RequestParams params = new RequestParams();
+		params.put("id", id);
+		getClient().post(apiUrl, params, handler);
+	}
+
+	public void deFavorite(long id, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("favorites/destroy.json");
+		RequestParams params = new RequestParams();
+		params.put("id", id);
+		getClient().post(apiUrl, params, handler);
+	}
+
+	public void createFriendship(long id, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("friendships/create.json");
+		RequestParams params = new RequestParams();
+		params.put("user_id", id);
+		getClient().post(apiUrl, params, handler);
+	}
+
+	public void destroyFriendship(long id, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("friendships/destroy.json");
+		RequestParams params = new RequestParams();
+		params.put("user_id", id);
+		getClient().post(apiUrl, params, handler);
+	}
+
+	public void directMessages(AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("direct_messages.json");
+		RequestParams params = new RequestParams();
+		params.put("count", 20);
+		getClient().get(apiUrl, params, handler);
+	}
+
+	public void getFollowers(long id, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("friends/list.json");
+		RequestParams params = new RequestParams();
+		params.put("user_id", id);
+		getClient().get(apiUrl, params, handler);
+	}
+
+
+
+
 //    GET statuses/home_timeline.json
 //            count=25
 //    since_id=1

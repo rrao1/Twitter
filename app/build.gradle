@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.android.application'
+
 
 android {
     compileSdkVersion 23
@@ -35,4 +38,9 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
     // ActiveAndroid for simple persistence with an ORM
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile 'org.parceler:parceler-api:1.1.1'
+    apt 'org.parceler:parceler:1.1.1'
+    compile 'com.android.support:support-v4:23.1.1'
+
 }

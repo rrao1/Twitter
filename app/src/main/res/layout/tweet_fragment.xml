@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- fragment_edit_name.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:layout_gravity="center" android:orientation="vertical"  >
+
+    <!--<TextView-->
+        <!--android:id="@+id/lbl_your_name" android:text="Your name"-->
+        <!--android:layout_width="wrap_content" android:layout_height="wrap_content" />-->
+
+    <EditText
+        android:id="@+id/txt_your_name"
+        android:layout_width="match_parent"  android:layout_height="400dp"
+        android:inputType="textMultiLine"
+        android:imeOptions="actionDone"
+        android:maxLength="140"
+        android:hint="What's happening?"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tweet"
+        android:onClick="dismiss"
+        android:id="@+id/button2"
+        android:layout_gravity="right" />
+
+    <TextView
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/tvCharacterCount"
+        android:layout_gravity="right" />
+</LinearLayout>
