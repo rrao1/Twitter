@@ -44,29 +44,6 @@
             android:textSize="12sp"/>
 
 
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Follow"
-            android:id="@+id/btnFollow"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="52dp"
-            android:layout_marginEnd="52dp" />
-
-        <!--<Button-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="followers"-->
-            <!--android:onClick="viewFollowers"-->
-            <!--android:id="@+id/btnFollowers"-->
-            <!--android:layout_alignBottom="@+id/button"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_alignParentEnd="true" />-->
-
     </RelativeLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -87,13 +64,26 @@
             android:text="5 Following"
             android:id="@+id/tvFollowing"
             android:layout_marginLeft="20dp"/>
+
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:id="@+id/flContainer"
         android:layout_below="@+id/llCounts"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/flContainer"></FrameLayout>
+        android:layout_marginTop="67dp"></FrameLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Follow"
+        android:id="@+id/btnFollow"
+        android:layout_below="@+id/llCounts"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>

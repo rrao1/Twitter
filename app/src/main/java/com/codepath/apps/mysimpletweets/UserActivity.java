@@ -1,5 +1,7 @@
 package com.codepath.apps.mysimpletweets;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -32,6 +34,8 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         user = (User) Parcels.unwrap(getIntent().getParcelableExtra("user"));
         getSupportActionBar().setTitle("@" + user.getScreenName());
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4099FF")));
 
         //Button btnFollowers = (Button) findViewById(R.id.btnFollowers);
         populateProfileHeader(user);
@@ -69,14 +73,11 @@ public class UserActivity extends AppCompatActivity {
 
         final Button btnFollow = (Button) findViewById(R.id.btnFollow);
 
-//        if (u.getFollowing()) {
-//            btnFollow.setText("Unfollow");
-//
-//        }
-//        else {
-//            btnFollow.setText("Follow");
-//
-//        }
+        if (u.getFollowing()) {
+            btnFollow.setText("Unfollow");
+
+        }
+
         btnFollow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {

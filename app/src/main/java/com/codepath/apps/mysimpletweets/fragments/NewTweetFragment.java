@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.TwitterApplication;
@@ -98,7 +97,6 @@ public class NewTweetFragment extends DialogFragment {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                Toast.makeText(getContext(), "before", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -106,13 +104,11 @@ public class NewTweetFragment extends DialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 tvCharacterCount.setText(
                         (140 - mEditText.getText().toString().length()) + "");
-                Toast.makeText(getContext(), "during", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                Toast.makeText(getContext(), "after", Toast.LENGTH_SHORT).show();
 
             }
         });

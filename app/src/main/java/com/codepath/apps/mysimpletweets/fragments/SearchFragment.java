@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.codepath.apps.mysimpletweets.TimelineActivity;
 import com.codepath.apps.mysimpletweets.TwitterApplication;
@@ -46,7 +45,6 @@ public class SearchFragment extends TweetsListFragment{
     @Override
     public void onResume() {
         super.onResume();
-        Toast.makeText(getContext(), "sup", Toast.LENGTH_SHORT).show();
         populateTimeline();
     }
 

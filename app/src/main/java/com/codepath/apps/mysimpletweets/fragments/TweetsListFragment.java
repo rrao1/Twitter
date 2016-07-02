@@ -159,9 +159,6 @@ public class TweetsListFragment extends Fragment {
 
                 //Log.d("DEBUG", json.toString());
                 Log.d("DEBUG", json.toString());
-                //Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show();
-
-                //super.onSuccess(statusCode, headers, response);
             }
 
             //FAILURE

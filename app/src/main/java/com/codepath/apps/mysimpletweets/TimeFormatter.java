@@ -1,5 +1,7 @@
 package com.codepath.apps.mysimpletweets;
 
+import android.util.Log;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,6 +21,7 @@ public class TimeFormatter {
         format.setLenient(true);
         try {
             long diff = (System.currentTimeMillis() - format.parse(rawJsonDate).getTime()) / 1000;
+            Log.d("diff", diff+"");
             if (diff < 5)
                 time = "Just now";
             else if (diff < 60)

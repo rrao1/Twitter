@@ -1,6 +1,8 @@
 package com.codepath.apps.mysimpletweets;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.codepath.apps.mysimpletweets.fragments.UserTimelineFragment;
 import com.codepath.apps.mysimpletweets.models.User;
@@ -38,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
                 user = User.fromJSON(response);
                 //my current user account's info
                 getSupportActionBar().setTitle("@" + user.getScreenName());
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4099FF")));
                 populateProfileHeader(user);
             }
         });
@@ -51,7 +53,6 @@ public class ProfileActivity extends AppCompatActivity {
             //display user fragment within this activity (dynamically)
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flContainer, fragmentUserTimeline);
-            Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show();
             ft.commit(); //changes the fragments
         }
     }

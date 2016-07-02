@@ -2,8 +2,6 @@ package com.codepath.apps.mysimpletweets;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.codepath.apps.mysimpletweets.fragments.RetweetFragment;
 import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
@@ -86,21 +83,18 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         btnRetweet.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                Log.d("got", "here");
-
-                Log.d("got1", "here");
                 if (context1.getClass().equals(TimelineActivity.class)) {
                     ((TimelineActivity) context1).showRetweetDialog((long) btnRetweet.getTag());
-                    FragmentManager fm = ((AppCompatActivity) getContext()).getSupportFragmentManager();
-                    RetweetFragment frag = new RetweetFragment();
-                    frag.show(fm, "retweet_fragment");
-                    Log.d("got1", "here");
+//                    FragmentManager fm = ((AppCompatActivity) getContext()).getSupportFragmentManager();
+//                    RetweetFragment frag = new RetweetFragment();
+//                    frag.show(fm, "retweet_fragment");
+//                    Log.d("got1", "here");
                 }
                 else if (context1.getClass().equals(UserActivity.class)) {
                     ((UserActivity) context1).showRetweetDialog((long) btnRetweet.getTag());
-                    FragmentManager fm = ((AppCompatActivity) getContext()).getSupportFragmentManager();
-                    RetweetFragment frag = new RetweetFragment();
-                    frag.show(fm, "retweet_fragment");
+//                    FragmentManager fm = ((AppCompatActivity) getContext()).getSupportFragmentManager();
+//                    RetweetFragment frag = new RetweetFragment();
+//                    frag.show(fm, "retweet_fragment");
 
                 }
             }
